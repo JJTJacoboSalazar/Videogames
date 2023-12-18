@@ -1,10 +1,10 @@
-const verifyData = require('../auxFunctions/verifyData');
+const verifyData = require('../helpers/verifyData');
 const postVideogame = require('../controllers/postVideogame');
 
 const postNewGame = async (req, res) => {
-    const {id, name, description, genres, platforms, background_image, released, rating} = req.body;
+    const {id, name, description, genres, platforms, image, released, rating} = req.body;
     try {
-        const verify = verifyData(id, name, description, genres, platforms, background_image, released, rating);
+        const verify = verifyData(id, name, description, genres, platforms, image, released, rating);
 
         const newGame = await postVideogame(verify);
 

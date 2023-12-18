@@ -1,6 +1,6 @@
 const {Genre} = require('../db');
 const {findGenres, saveGenresDB} = require('../controllers/findGenres');
-const dataGenres = require('../auxFunctions/dataGenres');
+const dataGenres = require('../helpers/dataGenres');
 
 
 const getGenres = async (req,res) => {

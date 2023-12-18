@@ -1,5 +1,5 @@
 const {Videogame, Genre} = require("../db")
-const getFilteredAPI = require('../auxFunctions/getFilteredAPI')
+const getFilteredAPI = require('../helpers/getFilteredAPI')
 
 const findAllVideogames = async () => {
     const allGamesAPI = await getFilteredAPI(); //Obtenemos los videojuegos de la API y los limpiamos al mismo tiempo con el cleanDataGame dentro de la misma

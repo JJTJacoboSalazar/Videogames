@@ -2,7 +2,7 @@ const {Videogame, Genre} = require("../db");
 const {Op} = require('sequelize');
 const {findGenres, saveGenresDB} = require('./findGenres')
 
-const createVideogame = async ({id, name, description, genres, platforms, background_image, released, rating}) => {
+const createVideogame = async ({id, name, description, genres, platforms, image, released, rating}) => {
     const findVideogame = await Videogame.findAll({  //Verificamos si el juego existe en BDD
         where: {
             name: {
@@ -14,7 +14,7 @@ const createVideogame = async ({id, name, description, genres, platforms, backgr
 
 if(findVideogame.length) throw new Error ('Ahem! There is already a game with that name!');
 
-const newGame = await Videogame.create({id, name, description, genres, platforms, background_image, released, rating});
+const newGame = await Videogame.create({id, name, description, genres, platforms, image, released, rating});
 
 
 //*Find y save para buscar los generos y guardarlos

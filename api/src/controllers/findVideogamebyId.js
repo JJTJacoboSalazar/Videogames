@@ -1,6 +1,6 @@
 const axios = require('axios');
 const {Videogame, Genre} = require( '../db');
-const dataGames = require('../auxFunctions/dataGames');
+const dataGames = require('../helpers/dataGames');
 const {API_KEY} = process.env;
 
 const findVideogameById = async (id, idType) => { 
