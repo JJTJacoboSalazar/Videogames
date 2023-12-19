@@ -1,0 +1,88 @@
+.container {
+    display: flex;
+    background-image: url(../../assets/landing_bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    justify-content: end;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn_landing {
+    position: relative;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000000;
+    margin: 100px 100px;
+    text-decoration: none;
+    transition: 1s;
+    border-radius: 4px;
+    overflow: hidden;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0004);
+    width: 130px;
+}
+
+.btn_landing:hover {
+    background: #245d6b;
+    box-shadow: 0 0 10px #455053,
+        0 0 30px #4b0aff5e,
+        0 0 60px #4b0aff5e,
+        0 0 100px #4b0aff5e;
+}
+
+.btn_landing:before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 400%;
+    background: white;
+    transition: 3s;
+    animation: animate 10s linear infinite;
+    /* animation-delay: calc(0.33s * 1); */
+}
+
+.btn_landing:hover:before {
+    width: 120%;
+    background: black;
+}
+
+@keyframes animate {
+    100% {
+        transform: rotate(0deg);
+    }
+
+    0% {
+        transform: rotate(360deg);
+    }
+}
+
+.btn_landing:after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: #254283;
+}
+
+.btn_landing:hover:after {
+    background: rgba(0, 174, 255, 0.596);
+}
+
+.btn_landing span {
+    position: relative;
+    z-index: 1;
+    font-size: 2em;
+    color: #ffffff;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    transition: 0.5s;
+}
+
+.btn_landing:hover span {
+    opacity: 1;
+}
