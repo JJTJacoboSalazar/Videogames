@@ -1,14 +1,13 @@
-const findAllVideogames = require('../controllers/findAllVideogames');
-const findVideogameByName = require('../controllers/findVideogameByName');
+const findAllVideogames = require("../controllers/findAllVideogames");
 
-const getVideogames = async (req,res) => {
-    const {name} = req.query;
-    try {
-        const response = name? await findVideogameByName(name) : await findAllVideogames();
-        res.status(200).json(response);
-    } catch (error) {
-        res.status(500).json({"error": error.message})
-    }
-}
+const getGames = async (req, res) => {
+  try {
+    const games = await findAllVideogames();
+    return res.status(200).json(games);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
 
-module.exports = getVideogames;
+
+module.exports = getGames

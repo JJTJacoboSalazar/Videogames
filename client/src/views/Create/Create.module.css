@@ -1,0 +1,13 @@
+.create{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 80px;
+}
+.title{
+    font-family: 'Stretch Pro';
+    font-size: 50px;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+}

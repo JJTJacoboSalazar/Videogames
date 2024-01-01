@@ -1,22 +1,36 @@
 const axios = require('axios');
-const {API_KEY} = process.env;
-const {Genre} = require('../db');
+const { Genre } = require('../db');
+const { API_KEY } = process.env
 
-const findGenres = async () =>{
-    const response = (await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)).data.results;
-    return response;
-}
 
-const saveGenresDB = async (data) => {
-    let genres = data.map((genre) => genre.name); //Filtramos la informacion para que me llegue en data
-    genres.forEach(async (genre) => {
-        if(genre.length > 0){
-            await Genre.findOrCreate({where: {name: genre}}) //Creamos los generos en el modelo
-        }
-    })
-}
+const findGenres = async () => {
 
-module.exports = {
-    findGenres,
-    saveGenresDB
-}
+    const URL = `https://api.rawg.io/api/genres?key=${API_KEY}`;
+
+    try {
+
+        const genresDB = await Genre.findAll();
+
+        if (genresDB.length === 0) {
+            
+            const genresAPI = await axios.get(URL);
+
+            const newGenres = genresAPI.data.results.map((genre, index) => ({
+                id: index,
+                name: genre.name,
+            }));
+
+            await Genre.bulkCreate(newGenres);
+            
+            return newGenres
+
+        } else {
+            return genresDB
+        };
+        
+    } catch (error) {
+        return error
+    };
+};
+
+module.exports = findGenres

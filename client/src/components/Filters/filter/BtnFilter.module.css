@@ -1,0 +1,137 @@
+.wrapper{
+    position: absolute;
+    z-index: 2;
+    top: 180px;
+    left: 10px;
+}
+
+.filterImg {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.filterImg:hover {
+    transform: scale(1.1);
+}
+.filterBtnHide{
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border-radius: 50%;
+    transition: opacity 1s, box-shadow .3s, transform .3s, background-color .3s;
+}
+.filterBtn:active{
+    transform: scale(1.1);
+}
+.filterBtn::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    backdrop-filter: blur(5px);
+    /* border: 1px solid rgba(255, 255, 255, 0.5); */
+    padding: 5px 15px;
+    top: 10px;
+    left: 90px;
+    border-radius: 50px;
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.filterBtn:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.optionsActive{
+    width: 200px;
+    height: 400px;
+    background-color: white;
+    border-radius: 25px;
+    position: relative;
+    left: 80px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-style: normal;
+    color: #333333;
+    overflow-y: scroll;
+    transition: .4s;
+}
+.optionsActive::-webkit-scrollbar {
+    width: 5px;
+}
+
+.optionsActive::-webkit-scrollbar-thumb {
+    background-color: #dddddd;
+    border-radius: 10px;
+}
+.optionsActive::-webkit-scrollbar-button {
+    background-color: rgba(0, 0, 0, 0);
+    height: 10px;
+}
+
+.optionsDeactive{
+    width: 200px;
+    height: 0px;
+    background-color: white;
+    border-radius: 25px;
+    position: relative;
+    left: 80px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-style: normal;
+    color: #333333;
+    overflow: auto;
+    transition: .2s;
+}
+.optionsDeactive::-webkit-scrollbar {
+    display: none;
+}
+
+.optionsDeactive::-webkit-scrollbar-thumb {
+    display: none;
+}
+.optionsDeactive::-webkit-scrollbar-button {
+    display: none;
+}
+
+.option{
+    width: 100%;
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-style: normal;
+    color: #333333;
+    text-align: center;
+    cursor: pointer;    
+}
+.optionSelected{
+    width: 100%;
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-style: normal;
+    color: #333333;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgb(226, 204, 255);    
+}
+.option:hover{
+    background-color: rgb(226, 204, 255);
+}

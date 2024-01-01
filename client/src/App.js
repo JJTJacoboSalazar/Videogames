@@ -1,59 +1,83 @@
-import './App.css';
-
-import LandingPage from './components/LandingPage/landingPage.jsx';
-import About from "./components/About/About.jsx";
-import Nav from "./components/Nav/Nav.jsx";
-import Home from "./components/Home/Home.jsx"
-import Form from './components/CreateForm/CreateForm.jsx';
-import Detail from './components/Detail/Detail.jsx';
-
-import { Route, Routes, useLocation} from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+//app css
+import './App.css'
+// views
+import Landing from './views/Landing/Landing';
+import Home from './views/Home/Home';
+import Detail from './views/Detail/Detail';
+import CreateVideogame from './views/Create/CreateVideogame';
+// components
+import NavBar from './components/NavBar/NavBar';
+import Footer from './components/Footer/Footer';
+import NotFound from './components/NotFound/NotFound';
+// helpers
+import Path from './auxFunctions/routesHelpers';
+//react, redux
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getAllGames, getAllPlatforms, getGenres } from './redux/actions';
+import { useDispatch, useSelector } from 'react-redux'
+import { get_genres, get_platforms, get_videogames, get_videogamesByName } from './redux/actions';
+//axios
+import axios from 'axios';
 
 
 function App() {
-  const allGenres = useSelector((state)=> state.genresGames);
-  const allPlatforms = useSelector((state) => state.allPlatforms);
-  const [currentPage,setCurrentPage] = useState(1);
 
-  const dispatch = useDispatch();
-  
-  useEffect(() => {  
-    dispatch(getAllGames());
-  },[dispatch])
+  const { pathname } = useLocation();
 
-  useEffect(() => {  
-    dispatch(getGenres());
-  },[dispatch])
+  const platforms = useSelector(state => state.platforms)
+  const genres = useSelector(state => state.genres)
+  const videogames = useSelector(state => state.home_videogames)
+  const dispatch = useDispatch()
+
+  const [ searchTerm , setSearchTerm ] = useState('')
 
   useEffect(()=>{
-    dispatch(getAllPlatforms());
-  },[dispatch])
+    if (platforms.length === 0) dispatch(get_platforms())
+    if (genres.length === 0) dispatch(get_genres())
+    if (videogames.length === 0 || searchTerm === '') dispatch(get_videogames())
+    if (searchTerm != '') dispatch(get_videogamesByName(searchTerm))
 
-  const location = useLocation();
-  const shouldRenderNav = location.pathname !== '/';
+    if (pathname === "/") {
+      document.body.className = "landBack";
+    }
+    if (pathname === "/home") {
+      document.body.className = "homeBack";
+    }
+    if (pathname.startsWith("/detail")) {
+      document.body.className = "detailBack";
+    }
+    if (pathname === "/create") {
+      document.body.className = "createBack";
+    }
+  }, [searchTerm, pathname])
+
+
+  const submitVideogame = (videogameData) => {
+    axios
+      .post('http://localhost:3001/create', videogameData)
+      .then((response) => {
+        if (response.status === 200) {
+          window.alert("Subido con Exito")
+        }
+      })
+      .catch((error) => {
+        window.alert(error.response.data.error)
+      })
+  }
+
   return (
-    <div>
-      {shouldRenderNav && <Nav/>}
+    <div className='App'>
+      {pathname !== "/" && <NavBar genres={genres} searchTerm={searchTerm} setSearchTerm={setSearchTerm}></NavBar>}
       <Routes>
-      <Route path='/' element={<LandingPage/>} />
-
-      <Route path="/home"
-        element={<Home allGenres={allGenres} currentPage={currentPage} setCurrentPage={setCurrentPage}/>}
-      />
-
-      <Route path="/about" element={<About/>}/>
-
-      <Route path="/detail/:idGame" element={<Detail/>}/>
-      
-      <Route path="/create"
-        element={<Form allGenres={allGenres} allPlatforms={allPlatforms}/>}
-      />
+          <Route path={Path.Landing} element={<Landing/>}></Route>
+          <Route path={Path.Home} element={<Home/>}></Route>
+          <Route path={Path.Detail} element={<Detail/>}></Route>
+          <Route path={Path.Create} element={<CreateVideogame platforms={platforms} genres={genres} submitVideogame={submitVideogame}/>}></Route>
+          <Route path={Path.NotFound} element={<NotFound/>}></Route>
       </Routes>
+      {pathname !== "/" && <Footer/>}
     </div>  
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,60 @@
+.searchImg{
+    opacity: 1;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px rgb(180, 180, 180);
+    transition: opacity 1s, box-shadow .3s, transform .3s, background-color .3s;
+    cursor: pointer;
+}
+.searchImg:hover{
+    box-shadow: 0px 0px 20px rgba(137, 0, 255, 0.5);
+}
+.searchImg:active{
+    background-color: #dddddd;
+    transform: scale(0.8);
+}
+
+.searchImg:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.inputActive{
+    width: fit-content;
+    height: fit-content;
+}
+.inputDeactive .searchBar{
+    padding: 0;
+    width: 0;
+    transition: .5s;
+}
+.searchBar{
+    width: 200px;
+    height: 40px;
+    background-color: white;
+    outline: none;
+    border-radius: 30px;
+    border: none;
+    position: relative;
+    z-index: 2;
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-style: normal;
+    color: #333333;
+    transition: 1s;
+}
+.searchBar::placeholder{
+    font-family: 'Roboto';
+    font-size: 15px;
+    font-style: italic;
+    color: #999999;
+}
+.searchBar:focus{
+    box-shadow: 0px 0px 10px rgba(137, 0, 255, 0.5);
+    border: 0px;
+}

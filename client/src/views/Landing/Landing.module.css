@@ -1,0 +1,417 @@
+.fondo{
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0.678)), url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7a4f2faf-7d57-48f8-8b4e-ea655774db6b/ddrfu5v-8497eeac-ad03-4abf-957a-63159599231e.jpg/v1/fill/w_1192,h_670,q_70,strp/ultimate_gaming_wallpaper_by_jacktheknight_ddrfu5v-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiJcL2ZcLzdhNGYyZmFmLTdkNTctNDhmOC04YjRlLWVhNjU1Nzc0ZGI2YlwvZGRyZnU1di04NDk3ZWVhYy1hZDAzLTRhYmYtOTU3YS02MzE1OTU5OTIzMWUuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.bf1nqWnsNwZ1xKKyTEbcrrWf4-8nY1C5rgSIe3oh7QM");
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(20, 20, 20);
+    background-size: cover;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    background-position: center center;
+}
+.titletext {
+    font-size: 40px;
+    color: #1957ff;
+    position: relative;
+    margin-right: 25px;
+    margin-top: 20px;
+    position: relative;
+    font-size: 60px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.titletext::before {
+    position: absolute;
+    content: attr(data-text);
+    text-shadow: 0px 0px 20px #00aeff;
+    filter: blur(20px) brightness(0);
+    animation: flicker 2s backwards infinite;
+    animation-delay: 1s;
+    /* Asegúrate de que el pseudo-elemento se extienda a lo largo de todo el texto */
+    width: 100%;
+    height: 100%;
+    /* Darle al pseudo-elemento un color de fondo transparente */
+    background-color: transparent;
+}
+
+@keyframes flicker {
+    0% {
+        filter: blur(5px) brightness(1);
+    }
+
+    3% {
+        filter: blur(5px) brightness(0);
+    }
+
+    6% {
+        filter: blur(5px) brightness(0);
+    }
+
+    7% {
+        filter: blur(5px) brightness(1);
+    }
+
+    8% {
+        filter: blur(5px) brightness(0);
+    }
+
+    9% {
+        filter: blur(5px) brightness(1);
+    }
+
+    10% {
+        filter: blur(5px) brightness(0);
+    }
+
+    20% {
+        filter: blur(5px) brightness(1);
+    }
+
+    50% {
+        filter: blur(5px) brightness(1);
+    }
+
+    99% {
+        filter: blur(5px) brightness(0);
+    }
+
+    100% {
+        filter: blur(5px) brightness(1);
+    }
+
+}
+.juegos1{
+    background-image: url("https://tinfoil.media/ti/0100AA50151F6000/0/0/");
+    filter: brightness(70%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 300px;
+    height: 450px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 80px;
+    background-color: red;
+    position: relative;
+    animation-name: example1;
+    animation-duration: 4.3s;
+    animation-delay: -3s;
+    border: 0.1em solid rgb(0, 90, 105);
+    display: block;
+
+}
+@keyframes example1 {
+  
+    75%  {opacity: 0.0; left:0px; top:200px;}
+    100% {left:0px; top:0px;}
+  }
+.juegos2{
+    background-image: url("https://i.etsystatic.com/12175780/r/il/b4291c/1578656001/il_fullxfull.1578656001_2i4e.jpg");
+    filter: brightness(70%);
+    opacity: 10;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 300px;
+    height: 450px;
+    background-color: rgb(8, 8, 8);
+    position: relative;
+    margin-bottom: 80px;
+    animation-name: example2;
+    animation-duration: 4.3s;
+    animation-delay: -3s;
+    border: 0.1em solid rgb(0, 90, 105);
+    display: block;
+
+}
+@keyframes example2 {
+  
+    75%  {opacity: 0.0; left:0px; top:200px;}
+    100% {left:0px; top:0px;}
+  }
+
+.btn_landing {
+    position: relative;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000000;
+    margin: 100px 100px;
+    text-decoration: none;
+    transition: 1s;
+    border-radius: 4px;
+    overflow: hidden;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0004);
+    width: 100px;
+    height: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn_landing:hover {
+    background: #245d6b;
+    box-shadow: 0 0 10px #455053,
+        0 0 30px #4b0aff5e,
+        0 0 60px #4b0aff5e,
+        0 0 100px #4b0aff5e;
+}
+
+.btn_landing:before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 400%;
+    background: white;
+    transition: 3s;
+    animation: animate 10s linear infinite;
+    /* animation-delay: calc(0.33s * 1); */
+}
+
+.btn_landing:hover:before {
+    width: 120%;
+    background: black;
+}
+
+@keyframes animate {
+    100% {
+        transform: rotate(0deg);
+    }
+
+    0% {
+        transform: rotate(360deg);
+    }
+}
+
+.btn_landing:after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: #254283;
+}
+
+.btn_landing:hover:after {
+    background: rgba(0, 174, 255, 0.596);
+}
+
+.btn_landing span {
+    position: relative;
+    z-index: 1;
+    font-size: 2em;
+    color: #ffffff;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    transition: 0.5s;
+}
+
+.btn_landing:hover span {
+    opacity: 1;
+}
+
+.message {
+    display: flex;
+}
+
+
+.inicio{
+    width: 100%;
+    padding-right: 0%;
+    padding-left: 155px;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+}
+.inicio p{
+    font-size: 22px;
+    color: rgb(116, 116, 116);
+}
+@keyframes nombre {
+    75%  {color: rgba(240, 248, 255, 0); left:0px; bottom:200px;}
+    100% {color: aliceblue; left:0px; bottom:0px;}
+  }
+.inicio p{
+    margin-right: 25px;
+    margin-top: 20px;
+    position: relative;
+    animation-name: p;
+    font-size: 22px;
+    animation-duration: 4s;
+    animation-delay: -3s;
+    color: rgba(173, 173, 173, 0.904);
+}
+@keyframes p {
+    75%  {color: rgba(240, 248, 255, 0);}
+    100% {color: rgb(116, 116, 116);}
+  }
+  .inicio h3{
+    font-size: 15px;
+    margin-right: 25px;
+    margin-top: 20px;
+    position: relative;
+    animation-name: h3;
+    animation-duration: 4s;
+    animation-delay: -3s;
+    color: rgba(240, 248, 255, 0.5);
+}
+@keyframes h3 {
+    75%  {color: rgba(240, 248, 255, 0); right:200px;}
+    100% {color: aliceblue; right:0px;}
+  }
+
+  .henrycontainer {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+  }
+  .henry{
+    width: 140px;
+    margin-right: 25px;
+    position: relative;
+    font-size: 30px;
+    animation-name: henry;
+    animation-duration: 4s;
+    animation-delay: -3s;
+    color: rgb(0, 182, 214);
+}
+@keyframes henry {
+    75%  {color: rgba(240, 248, 255, 0); right:200px;}
+    100% {color: rgb(0, 182, 214);; right:0px;}
+  }
+  .inicio button{
+    margin-right: 25px;
+    margin-top: 20px;
+    position: relative;
+    animation-name: button;
+    animation-duration: 4s;
+    animation-delay: -3s;
+    color: aliceblue;
+}
+@keyframes button {
+    75%  {color: rgba(240, 248, 255, 0); left:0px; top:200px;}
+    100% {color: aliceblue; left:0px; top:0px;}
+  }
+.boton{
+    width: 30%;
+    padding-left:35px;
+    padding-right: 35px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: rgb(0, 182, 214);
+    font-size:30px;
+    border-radius: 35px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: aliceblue;
+}
+
+.cubo{
+    width: 130%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Media query for screens smaller than 1000px */
+
+@media (max-width: 1000px) {
+    .inicio{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 150px;
+        width: 100%;
+        padding-right: 0%;
+        padding-left: 30px;
+        font-size: 25px;
+        color: rgb(255, 255, 255);
+    }
+    .juegos1{
+        width: 220px;
+        height: 280px;
+    }
+    .juegos2{
+        width: 220px;
+        height: 280px;
+    }
+    .boton {
+        width: 70%;
+        font-size: 20px;
+    }
+    .cubo {
+        width: 100%;
+    }
+}
+
+/* Media query for screens smaller than 900px */
+@media (max-width: 900px) {
+    .juegos1{
+        width: 220px;
+        height: 300px;
+    }
+    .juegos2{
+        display: none;
+    }
+    .boton {
+        width: 70%;
+        font-size: 20px;
+    }
+    .cubo {
+        width: 100%;
+    }
+}
+
+/* Media query for screens smaller than 800px */
+
+@media (max-width: 800px) {
+    .juegos1{
+        display: none;
+    }
+    .juegos2{
+        display: none;
+    }
+    .boton {
+        width: 70%;
+        font-size: 20px;
+    }
+
+
+}
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+    .juegos1{
+        display: none;
+    }
+    .juegos2{
+        display: none;
+    }
+    .boton {
+        width: 70%;
+        font-size: 20px;
+    }
+
+    .cubo {
+        width: 100%;
+    }
+}
+
+/* Media query for screens smaller than 500px */
+
+@media (max-width: 500px) {
+    .juegos1{
+        display: none;
+    }
+    .juegos2{
+        display: none;
+    }
+    .boton {
+        width: 70%;
+        font-size: 20px;
+    }
+
+    .inicio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

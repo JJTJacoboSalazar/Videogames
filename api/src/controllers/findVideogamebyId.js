@@ -1,26 +1,59 @@
-const axios = require('axios');
-const {Videogame, Genre} = require( '../db');
-const dataGames = require('../helpers/dataGames');
-const {API_KEY} = process.env;
+const axios = require('axios')
+const { API_KEY } = process.env
+const { Videogame , Genre } = require('../db')
 
-const findVideogameById = async (id, idType) => { 
-    if(idType == 'DB'){
-        const videogameDB = await Videogame.findByPk(id, { //Buscamos la PrimaryKey en la DB
-            include: { //Especifico que quiero incluir una tabla relacionada
-                model: Genre, //Modelo que quiero elegir
-                attributes: ['name'], //Atributo name
-                through: {
-                    attributes: [], //Excluyo los atributos de tabla intermedia
+const findVideogameById = async (id) => {
+
+    const regex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
+
+    const URL = `https://api.rawg.io/api/games/${id}?key=${API_KEY}`;
+
+    try {
+
+        if (regex.test(id)) {
+            const videogameDB = await Videogame.findOne({
+                where : {
+                    id : id
                 },
-            },
-        });
-        return videogameDB;
+                include : [
+                    {
+                        model: Genre,
+                        attributes: ['name'],
+                        through: { attributes: [] }
+                    },
+                ]
+            })
 
-    } else if(idType == 'API'){
-        const videogameAPI = (await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)).data;
-        const cleanVideogame = dataGames(videogameAPI); 
-        return cleanVideogame;
-    }
-};
+            if (videogameDB) {
+                return videogameDB
+            } else {
+                return { error : "Videogame does'nt exist" }
+            }
+            
+        } else {
 
-module.exports = findVideogameById;
+            const response = await axios.get(URL);
+            const data = response.data
+
+            const videogame = {
+                id : data.id,
+                name : data.name,
+                image : data.background_image,
+                platforms : data.platforms.map((p) => p.platform.name),
+                description : data.description,
+                released : data.released,
+                rating : data.rating,
+                genres : data.genres.map((p) => {
+                    return { name : p.name }
+                })
+            };
+
+            return videogame
+        }
+        
+    } catch (error) {
+        return error
+    };
+}
+
+module.exports = findVideogameById

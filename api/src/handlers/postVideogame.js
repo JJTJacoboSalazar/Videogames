@@ -1,19 +1,31 @@
-const verifyData = require('../helpers/verifyData');
-const postVideogame = require('../controllers/postVideogame');
+const postVideogame = require('../controllers/postVideogame')
 
-const postNewGame = async (req, res) => {
-    const {id, name, description, genres, platforms, image, released, rating} = req.body;
+const postGame = async (req, res) => {
+    
+    const { 
+        name,
+        description,
+        image,
+        platforms,
+        released,
+        rating,
+        genres
+    } = req.body;
+
+    if(!name || !description || !image || !platforms || !released || !rating || !genres) {
+        res.status(400).json({ error : "Faltan datos"})
+        return
+    }
+
     try {
-        const verify = verifyData(id, name, description, genres, platforms, image, released, rating);
 
-        const newGame = await postVideogame(verify);
+        const newVideogame = await postVideogame(name, description, image, platforms, released, rating, genres)
 
-        res.status(200).json(newGame);
+        res.status(200).json(newVideogame)
 
     } catch (error) {
-        res.status(400).json({"error": error.message})
+        res.status(500).json(error)
     }
 }
 
-
-module.exports = postNewGame;
+module.exports = postGame

@@ -1,0 +1,81 @@
+ .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem;
+  background-color: #001829;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.navcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  color: #fff;
+}
+
+.homeImg {
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.homeImg:hover {
+  transform: scale(1.1);
+}
+
+.createbtn {
+  display: inline-block;
+  font-size: 20px;
+  padding: 10px 30px;
+  color: #1ea099; /* Texto oscuro */
+  border-radius: 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.createbtn:hover {
+  color: #fff; /* Texto blanco al pasar el cursor */
+}
+
+.createbtn:active {
+  transform: scale(0.95); /* Se encoge un poco al hacer clic */
+}
+
+.linkBtn{
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.homeImg, .createbtn {
+  text-align: center;
+  display: inline-block;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .nav {
+      flex-direction: column;
+  }
+
+}

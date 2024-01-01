@@ -1,38 +1,56 @@
-const axios = require("axios");
-const {Videogame,Genre} = require("../db.js");
-const gamesData = require("./gamesData.js");
-const { Op } = require("sequelize");
+const axios = require('axios')
+const { Op } = require('sequelize');
+const { Videogame , Genre } = require('../db')
+const { API_KEY } = process.env
 
-const {API_KEY} = process.env;
+const findVideogameByName = async (gameName) => {
 
-const findGameByName = async (name) =>{
-    const cleanGameAPI = [];
-    let gameByNameAPI = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}`)).data.results;
+    const URL = `https://api.rawg.io/api/games?search=${gameName}&page_size=20&key=${API_KEY}`;
 
-    gameByNameAPI = await gamesData(gameByNameAPI);      //Limpio y filtro los datos que necesito.
-    for (let i = 0; (i < 15 && i < gameByNameAPI.length); i++) {            //Filtro los primeros 15 juegos en un nuevo array.
-        if(gameByNameAPI[i] !== null || gameByNameAPI[i] !== undefined){
-            cleanGameAPI[i] = gameByNameAPI[i]
-        }
-    }     
+    try {
+        
+        const videogamesDB = await Videogame.findAll({
+            where : {
+                name: {
+                    [Op.iLike]: `%${gameName}%`
+                }
+            },
+            include : [
+                {
+                    model: Genre,
+                    attributes: ['name'],
+                    through: { attributes: [] }
+                },
+            ],
+            attributes : ['id', 'name', 'image', 'rating'],
+            limit : 20
+        })
 
-    const gameByNameBD = await Videogame.findAll({        //Busco el name del juego en la DB
-        where: { name: {[Op.iLike]: name} },
-        include: {                              //Especifico que quiero incluir una tabla relacionada.
-            model: Genre,                       //Modelo que quiero incluir, en este caso, Genre.
-            attributes: ["name"],               //Incluyo el atributo "name" de Genre
-            through: {
-                attributes: []                  //No incluyo los atributos de la tabla intermedia en la propiedad "Genres"
-            }
-        }
-    });      
-     
-    //Si no encuentra el juego, error.
-    if(!cleanGameAPI.length && !gameByNameBD.length) throw new Error("This game doesn't exists")
-    
-    //Junto elementos de ambos arrays para luego enviarlo.
-    const gameByName = [...cleanGameAPI, ...gameByNameBD];  
-    return gameByName;
+        const apiResponse = await axios.get(URL)
+
+        const videogamesAPI = apiResponse.data.results.map((game) => ({
+            id : game.id,
+            name: game.name,
+            image: game.background_image,
+            rating: game.rating,
+            genres: game.genres.map((p) => {
+                return { name : p.name }
+            })
+        }));
+
+        const db_api = [...videogamesDB,...videogamesAPI];
+        const db_api_limited = db_api.slice(0, 20);
+
+        if (db_api.length === 0) {
+            return ({ error: 'No videogames with this name were found.' });
+          } else {
+            return db_api_limited
+          }
+
+    } catch (error) {
+        return error;
+    }
+
 }
 
-module.exports = findGameByName;
+module.exports = findVideogameByName

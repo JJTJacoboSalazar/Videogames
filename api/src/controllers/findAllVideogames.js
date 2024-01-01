@@ -1,20 +1,32 @@
-const {Videogame, Genre} = require("../db")
-const getFilteredAPI = require('../helpers/getFilteredAPI')
+require('dotenv').config();
+const { API_KEY } = process.env
+const axios = require('axios')
 
 const findAllVideogames = async () => {
-    const allGamesAPI = await getFilteredAPI(); //Obtenemos los videojuegos de la API y los limpiamos al mismo tiempo con el cleanDataGame dentro de la misma
 
-const videogamesDB = await Videogame.findAll({ //Obtenemos los videojuegos de la DB
-        include: { //Incluir una tabla relacionada
-            model: Genre, 
-            attributes: ["name"],
-            through: {
-                attributes: [] //No incluyo de la tabla intermedia
-            }
-        }
-    });
-    const allVideogames = [...allGamesAPI, ...videogamesDB ] //Concatenamos los videojuegos de la API y los de la base de datos devolviendolos en un unico array
-    return allVideogames;
+    const URL = `https://api.rawg.io/api/games?page_size=100&key=${API_KEY}`;
+
+    try {
+        
+        const findAllVideogames = await axios.get(URL)
+
+        const response = findAllVideogames.data.results;
+
+        const videogames = response.map((game) => ({
+            id : game.id,
+            name: game.name,
+            rating: game.rating,
+            image: game.background_image,
+            genres: game.genres.map((p) => {
+                return { name : p.name }
+            }),
+        }));
+
+        return videogames
+
+    } catch (error) {
+        return error
+    }
 }
 
-module.exports = findAllVideogames;
+module.exports = findAllVideogames
