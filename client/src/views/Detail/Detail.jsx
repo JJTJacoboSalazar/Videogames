@@ -10,7 +10,7 @@ const Detail = () => {
     const [ videogame , setVideogame ] = useState(null);
 
     useEffect(()=>{
-        axios(`http://localhost:3001/videogame/${id}`)
+        axios(`/videogame/${id}`)
         .then((response) => {
             setVideogame(response.data)
         })

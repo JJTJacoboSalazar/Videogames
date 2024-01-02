@@ -36,20 +36,7 @@ function App() {
     if (genres.length === 0) dispatch(get_genres())
     if (videogames.length === 0 || searchTerm === '') dispatch(get_videogames())
     if (searchTerm != '') dispatch(get_videogamesByName(searchTerm))
-
-    if (pathname === "/") {
-      document.body.className = "landBack";
-    }
-    if (pathname === "/home") {
-      document.body.className = "homeBack";
-    }
-    if (pathname.startsWith("/detail")) {
-      document.body.className = "detailBack";
-    }
-    if (pathname === "/create") {
-      document.body.className = "createBack";
-    }
-  }, [searchTerm, pathname])
+  }, [searchTerm])
 
 
   const submitVideogame = (videogameData) => {
@@ -57,7 +44,7 @@ function App() {
       .post('/create', videogameData)
       .then((response) => {
         if (response.status === 200) {
-          window.alert("Subido con Exito")
+          window.alert("Videogame created successfully")
         }
       })
       .catch((error) => {
