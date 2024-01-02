@@ -19,7 +19,7 @@ import { get_genres, get_platforms, get_videogames, get_videogamesByName } from 
 //axios
 import axios from 'axios';
 
-
+axios.defaults.baseURL = 'http://localhost:3001';
 function App() {
 
   const { pathname } = useLocation();
@@ -54,7 +54,7 @@ function App() {
 
   const submitVideogame = (videogameData) => {
     axios
-      .post('http://localhost:3001/create', videogameData)
+      .post('/create', videogameData)
       .then((response) => {
         if (response.status === 200) {
           window.alert("Subido con Exito")

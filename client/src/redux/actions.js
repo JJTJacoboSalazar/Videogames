@@ -8,7 +8,7 @@ import {
 import axios from 'axios';
 
 export const get_videogames = () => {
-    const endpoint = "http://localhost:3001/videogames"
+    const endpoint = "/videogames"
     return async (dispatch) => {
 
         try {
@@ -27,7 +27,7 @@ export const get_videogames = () => {
 }
 
 export const get_videogamesByName = (name) => {
-    const endpoint = `http://localhost:3001/videogame?name=${name}`
+    const endpoint = `/videogame?name=${name}`
     return async (dispatch) => {
 
         try {
@@ -46,7 +46,7 @@ export const get_videogamesByName = (name) => {
 }
 
 export const get_genres = () => {
-    const endpoint = "http://localhost:3001/genres"
+    const endpoint = "/genres"
     return async (dispatch) => {
 
         try {
@@ -65,7 +65,7 @@ export const get_genres = () => {
 }
 
 export const get_platforms = () => {
-    const endpoint = "http://localhost:3001/platforms"
+    const endpoint = "/platforms"
     return async (dispatch) => {
 
         try {
