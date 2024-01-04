@@ -3,7 +3,7 @@ const { Platform } = require('../db');
 const { API_KEY } = process.env;
 
 const findPlatforms = async () => {
-  const URL = `https://api.rawg.io/api/games?page_size=100&key=${API_KEY}`;
+  const URL = `https://api.rawg.io/api/games?key=${API_KEY}`;
   try {
     const findAllVideogames = await axios.get(URL);
     const responseData = findAllVideogames.data.results;
@@ -17,7 +17,7 @@ const findPlatforms = async () => {
         };
         if (!platforms.some((pl) => pl.id === platform.id)) {
           platforms.push(platform);
-          // Check if the platform already exists before trying to create it
+      
           const existingPlatform = await Platform.findByPk(platform.id);
           if (!existingPlatform) {
             await Platform.create(platform);

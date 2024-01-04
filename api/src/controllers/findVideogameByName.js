@@ -5,7 +5,7 @@ const { API_KEY } = process.env
 
 const findVideogameByName = async (gameName) => {
 
-    const URL = `https://api.rawg.io/api/games?search=${gameName}&page_size=20&key=${API_KEY}`;
+    const URL = `https://api.rawg.io/api/games?search=${gameName}&key=${API_KEY}`;
 
     try {
         

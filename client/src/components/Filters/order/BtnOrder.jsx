@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import style from './BtnOrder.module.css'
 import { orderVideogames } from '../../../redux/actions'
+import sort from '../../../assets/icons/sort.png'
 
 const BtnOrder = (props) => {
 
@@ -22,21 +23,10 @@ const BtnOrder = (props) => {
         setOptionSelected(order)
     }
 
-    const [ expanded , setExpanded ] = useState(false)
-
-    useEffect(()=>{
-        const timeOutId = setTimeout(()=>{
-            setExpanded(true)
-        }, 1000)
-
-        return () => {
-            clearTimeout(timeOutId)
-        }
-    }, [])
-
     return (
         <div className={style.wrapper}>
-            <div className={ expanded ? style.orderBtn : style.orderBtnHide } onClick={()=>{handleActivation()}} data-tooltip="Order"></div>
+            <p className={style.orderTitle}>Order</p>
+            <img src={sort} className={style.orderBtn } onClick={()=>{handleActivation()}} ></img>
             <div className={ visibility ? style.optionsActive : style.optionsDeactive}>
                 <div className={ optionSelected == "" ? style.optionSelected : style.option} onClick={()=>{handleOrder("")}}>
                     <p>Show Default</p>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import style from './BtnFilter.module.css'
 import { filterVideogames } from '../../../redux/actions'
@@ -24,21 +24,11 @@ const BtnFilter = (props) => {
         setOptionSelected(genre)
     }
 
-    const [ expanded , setExpanded ] = useState(false)
-
-    useEffect(()=>{
-        const timeOutId = setTimeout(()=>{
-            setExpanded(true)
-        }, 1000)
-
-        return () => {
-            clearTimeout(timeOutId)
-        }
-    }, [])
 
     return (
         <div className={style.wrapper}>
-                <img onClick={()=>{handleActivation()}} src={filter} alt="filter" className={style.filterImg}/>
+                <p className={style.filterTitle}>Filters</p>
+                <img onClick={()=>{handleActivation()}} src={filter} alt="filter" className={style.filterImg} data-tooltip="Filter"/>
             <div className={ visibility ? style.optionsActive : style.optionsDeactive}>
                 <div className={ optionSelected == "Default" ? style.optionSelected : style.option } onClick={()=>{handleFilter("Default")}}>
                     <p>Show All</p>

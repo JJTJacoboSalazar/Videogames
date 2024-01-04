@@ -1,8 +1,14 @@
 .wrapper{
     position: absolute;
     z-index: 2;
-    top: 120px;
+    top: 60px;
     left: 10px;
+}
+
+.orderTitle {
+    color: white;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .orderBtn{
     opacity: 1;
@@ -11,53 +17,12 @@
     position: absolute;
     background-color: white;
     border-radius: 50%;
-    background-image: url(../../../assets/icons/sort.png);
-    background-repeat: no-repeat;
-    background-size: 35px;
-    background-position: center;
-    cursor: pointer;
-    transition: opacity 1s, box-shadow .3s, transform .3s, background-color .3s;
 }
-.orderBtnHide{
-    opacity: 0;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    background-color: white;
-    border-radius: 50%;
-    background-image: url(../../../assets/icons/sort.png);
-    background-repeat: no-repeat;
-    background-size: 35px;
-    background-position: center;
-    cursor: pointer;
-    transition: opacity 1s, box-shadow .3s, transform .3s, background-color .3s;
-}
+
 .orderBtn:hover{
-    box-shadow: 0px 0px 10px rgba(137, 0, 255, 0.4);
+    transform: scale(1.1);
 }
-.orderBtn:active{
-    background-color: #dddddd;
-    transform: scale(0.8);
-}
-.orderBtn::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    padding: 5px 15px;
-    top: 10px;
-    left: 90px;
-    border-radius: 50px;
-    font-family: 'Roboto';
-    font-size: 15px;
-    font-weight: bold;
-    color: white;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
-}
+
 .orderBtn:hover::before {
     opacity: 1;
     visibility: visible;

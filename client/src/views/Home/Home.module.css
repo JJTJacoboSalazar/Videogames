@@ -3,9 +3,33 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 80px;
     gap: 30px;
     min-height: 77vh;
+    margin-left: 20px;
+}
+
+.navcontainer{
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.filtercont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}	
+
+.searchwrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    gap: 10px;
+    width: 100%;
 }
 .paginationwrap{
     display: flex;

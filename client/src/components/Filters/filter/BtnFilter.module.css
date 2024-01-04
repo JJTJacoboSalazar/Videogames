@@ -1,8 +1,14 @@
 .wrapper{
     position: absolute;
     z-index: 2;
-    top: 180px;
-    left: 10px;
+    top: 250px;
+    left: 10px;;
+}
+
+.filterTitle {
+    color: white;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .filterImg {
@@ -67,7 +73,7 @@
     font-family: 'Roboto';
     font-size: 15px;
     font-style: normal;
-    color: #333333;
+    color: #222222;
     overflow-y: scroll;
     transition: .4s;
 }
@@ -85,7 +91,7 @@
 }
 
 .optionsDeactive{
-    width: 200px;
+    /* width: 200px; */
     height: 0px;
     background-color: white;
     border-radius: 25px;

@@ -13,7 +13,7 @@ const postGame = async (req, res) => {
     } = req.body;
 
     if(!name || !description || !image || !platforms || !released || !rating || !genres) {
-        res.status(400).json({ error : "Faltan datos"})
+        res.status(400).json({ error : "Incomplete data"})
         return
     }
 

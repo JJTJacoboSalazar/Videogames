@@ -1,27 +1,31 @@
 import { useSelector } from "react-redux"
 import Cards from "../../components/CardsContainer/CardsContainer"
 import style from "./Home.module.css"
-import { useState } from "react"
+import { useState, useEffect} from "react"
 import notfound2 from "../../assets/img/notfound2.jpg"
+import Order from "../../components/Filters/order/BtnOrder"
+import Filter from "../../components/Filters/filter/BtnFilter"
+import Pagination from "../../components/Pagination"
 
 const Home = () => {
+    const [ search , setSearch ] = useState(false)
+    const genres = useSelector(state => state.genres)
+    
+    const [ btnFilter , setBtnFilter ] = useState(false)
+    const [ btnOrder , setBtnOrder ] = useState(false)
 
     const videogames = useSelector(state => Array.isArray(state.home_videogames) ? state.home_videogames : [])
 
-    const [ page, setPage ] = useState(1);
-    const videogamesPerPage = 10;
-    const totalPages = Math.ceil(videogames.length / videogamesPerPage)
+    const [currentPage, setCurrentPage] = useState(1);
+    const [dataPerPage] = useState(10);
+    const lastIndex = currentPage * dataPerPage;
+    const firstIndex = lastIndex -  dataPerPage;
+    const parsedData = videogames?.slice(firstIndex, lastIndex);
+    const visible_videogames = parsedData?.slice(0, dataPerPage);
 
-    const indexLastVideogame = page * videogamesPerPage;
-    const indexFirstVideogame = indexLastVideogame - videogamesPerPage;
-    
-    const visible_videogames = videogames.slice(indexFirstVideogame, indexLastVideogame);
-
-    const handlePageChange = (page) => {
-        setPage(page);
-    }
-
-    const pageNumbers = Array.from({ length : totalPages }, ( _ , index) => index + 1)
+    useEffect(() => {
+       setCurrentPage(1);
+      }, [btnFilter, btnOrder]);
 
     return (
         <div className={style.home}>
@@ -31,21 +35,24 @@ const Home = () => {
                 <img className={style.notfoundvdimg} src={notfound2} alt="notfound" /> 
             </> :
             <>
+            <div className={style.searchwrap}>
+            <div className={style.navcontainer}>
+                    <Order visibility={btnOrder} setVisibilityOrder={setBtnOrder} setVisibilityFilter={setBtnFilter} setVisibilitySearch={setSearch}></Order>
+                </div>
+
+            <div className={style.filtercont}>
+              
+             <Filter genres={genres} visibility={btnFilter} setVisibilityFilter={setBtnFilter} setVisibilityOrder={setBtnOrder} setVisibilitySearch={setSearch}></Filter>
+            </div>
+            </div>
             <Cards videogames={visible_videogames} ></Cards>
             <div className={style.paginationwrap}>
-                {
-                    pageNumbers.map((pageNumber, index) => {
-                        return (
-                            <button
-                                key={index}
-                                onClick={()=> handlePageChange(pageNumber)}
-                                className={ pageNumber === page ? style.btnPagesActive : style.btnPages}
-                            >
-                                {pageNumber}
-                            </button>
-                        )
-                    })
-                }
+            <Pagination
+            totalCount={videogames.length}
+            currentPage={currentPage}
+            pageSize={dataPerPage}
+            onPageChange={setCurrentPage}
+          />
             </div>
             </>
             }

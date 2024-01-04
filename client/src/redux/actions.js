@@ -3,7 +3,7 @@ import {
     FILTER,
     GENRES,
     PLATFORMS,
-    ORDER
+    ORDER,
 } from './action_types';
 import axios from 'axios';
 
@@ -94,3 +94,6 @@ export const filterVideogames = (genre) => {
       type : FILTER, payload : genre
     }
 }
+
+
+

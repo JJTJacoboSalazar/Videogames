@@ -1,0 +1,55 @@
+  .pagination {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.625rem 0.625rem 0.625rem 0rem;
+      justify-content: center;
+      align-items: center;
+      list-style-type: none;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    
+    .pageItem {
+      margin: 0 5px;
+    }
+    
+    .pageItem a {
+      padding: 5px 10px;
+      text-decoration: none;
+      color: #000;
+      background-color: #ffffff80;
+      border-radius: 3px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    
+    .pageItem a:hover {
+      background-color: #ddd;
+    }
+    
+    .first,
+    .prev,
+    .next,
+    .last {
+      background-color: #f8f9fa;
+      border: 1px solid #dee2e6;
+      
+    }
+    
+    .active a {
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 50%;
+    }
+    
+    .disabled a {
+      color: #a9aaaa;
+      pointer-events: none;
+    }
+
+    /* Añade esto para cambiar el tamaño de fuente y el relleno de los enlaces en pantallas más pequeñas */
+@media (max-width: 600px) {
+  .pageItem a {
+    font-size: 14px;
+    padding: 3px 6px;
+  }
+}

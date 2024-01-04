@@ -2,7 +2,7 @@ const findVideogameByName = require('../controllers/findVideogameByName')
 
 
 const getVideogameByName = async (req, res) => {
-    
+
     const gameName = req.query.name.toLowerCase();
 
     if (!gameName) {

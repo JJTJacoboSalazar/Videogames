@@ -1,15 +1,13 @@
 import { Link, NavLink, useLocation } from "react-router-dom"
 import Path from "../../auxFunctions/routesHelpers"
 import style from "./NavBar.module.css"
-import Order from "../Filters/order/BtnOrder"
-import Filter from "../Filters/filter/BtnFilter"
 import {useState } from "react"
-import Search from "../SearchBar/Search"
 import home from "../../assets/icons/home.png"
+import Search from "../SearchBar/Search"
 
 const NavBar = (props) => {
 
-    const { genres, searchTerm , setSearchTerm } = props
+    const { searchTerm , setSearchTerm } = props
 
     const { pathname } = useLocation()
 
@@ -28,11 +26,7 @@ const NavBar = (props) => {
                     <span>Create</span>
                 </NavLink>
                 <Search visibility={search} setVisibilityOrder={setBtnOrder} setVisibilityFilter={setBtnFilter} setVisibilitySearch={setSearch} searchTerm={searchTerm} setSearchTerm={setSearchTerm}></Search>
-                <div className={style.navcontainer}>
-                    <Order visibility={btnOrder} setVisibilityOrder={setBtnOrder} setVisibilityFilter={setBtnFilter} setVisibilitySearch={setSearch}></Order>
-                    <Filter genres={genres}visibility={btnFilter} setVisibilityFilter={setBtnFilter} setVisibilityOrder={setBtnOrder} setVisibilitySearch={setSearch}></Filter>
-                    <div className={style.filterBtn}></div>
-                </div>
+
             </div>
             :
             <div className={style.container}>

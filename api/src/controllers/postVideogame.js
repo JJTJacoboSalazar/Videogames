@@ -18,9 +18,9 @@ const postVideogame = async (name, description, image, platforms, released, rati
         await game.setGenres(genres);
 
         if (created) {
-            return ({ message : "Videojuego creado con exito"})
+            return ({ message : "Successfully created video game"})
         } else {
-            return ({ message : "El videojuego ya existe"})
+            return ({ message : "The video game already exists"})
         }
 
     } catch (error) {

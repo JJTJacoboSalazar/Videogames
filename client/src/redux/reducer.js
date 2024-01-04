@@ -3,7 +3,7 @@ import {
     ORDER,
     FILTER,
     GENRES,
-    PLATFORMS
+    PLATFORMS,
 } from './action_types'
 
 const initialState = {
@@ -19,8 +19,9 @@ const rootReducer = (state = initialState, {type, payload}) => {
             return {...state};
         case ADD_VIDEOGAMES:
             return {...state, home_videogames : payload, copy_videogames : payload}
+        
         case ORDER:
-            const orderedVideogames = [...state.copy_videogames]
+            const orderedVideogames = [...state.home_videogames]
             if (payload === 'AZ') {
                 orderedVideogames.sort((a, b) => (a.name > b.name ? 1 : -1));
             } else if (payload === 'ZA') {

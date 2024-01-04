@@ -1,8 +1,16 @@
+.orderContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: last baseline;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
 .searchImg{
     opacity: 1;
     width: 60px;
     height: 60px;
-    position: absolute;
     top: 5px;
     right: 5px;
     background-color: white;
@@ -11,9 +19,7 @@
     transition: opacity 1s, box-shadow .3s, transform .3s, background-color .3s;
     cursor: pointer;
 }
-.searchImg:hover{
-    box-shadow: 0px 0px 20px rgba(137, 0, 255, 0.5);
-}
+
 .searchImg:active{
     background-color: #dddddd;
     transform: scale(0.8);
@@ -25,8 +31,8 @@
 }
 
 .inputActive{
-    width: fit-content;
-    height: fit-content;
+    width: 200px;
+    height: 40px;
 }
 .inputDeactive .searchBar{
     padding: 0;
@@ -47,6 +53,7 @@
     font-style: normal;
     color: #333333;
     transition: 1s;
+    display: flex;
 }
 .searchBar::placeholder{
     font-family: 'Roboto';
@@ -57,4 +64,16 @@
 .searchBar:focus{
     box-shadow: 0px 0px 10px rgba(137, 0, 255, 0.5);
     border: 0px;
+}
+
+
+@media (max-width: 600px) {
+    .searchBar {
+        width: 150px; /* Hace que la barra de búsqueda ocupe todo el ancho en pantallas pequeñas */
+        font-size: 13px; /* Reduce el tamaño de la fuente en pantallas pequeñas */
+    }
+    .inputActive{
+        width:145px;
+        height: 40px;
+    }
 }

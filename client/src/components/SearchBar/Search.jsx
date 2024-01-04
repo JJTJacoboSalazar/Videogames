@@ -30,7 +30,7 @@ const Search = (props) => {
     }
 
     return (
-        <div>
+        <div className={style.orderContainer}>
                 <img onClick={() => {handleActivation()}} data-tooltip="Search" src={search} alt="search" className={style.searchImg}/>
             <div className={ visibility ? style.inputActive : style.inputDeactive}>
                 <input 
