@@ -17,7 +17,7 @@ const Home = () => {
     const videogames = useSelector(state => Array.isArray(state.home_videogames) ? state.home_videogames : [])
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [dataPerPage] = useState(10);
+    const [dataPerPage] = useState(8);
     const lastIndex = currentPage * dataPerPage;
     const firstIndex = lastIndex -  dataPerPage;
     const parsedData = videogames?.slice(firstIndex, lastIndex);
