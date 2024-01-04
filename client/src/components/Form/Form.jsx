@@ -60,6 +60,7 @@ const Form = (props) => {
         event.preventDefault()
 
         if (pathname.endsWith(0)) {
+            console.log("entro al if");
             if (Object.values(errors).some(error => error === '')){
                 submitVideogame({...videogameData, genres : selectedGenres, platforms : selectedPlatforms})
                 setVideogameData({
@@ -84,6 +85,8 @@ const Form = (props) => {
                 window.alert("Please complete the form")
             }
         } 
+        console.log("entro al else");
+
              else {
                 setErrors(ValidateForm(videogameData, selectedGenres, selectedPlatforms))
                 window.alert("Please complete the form")
