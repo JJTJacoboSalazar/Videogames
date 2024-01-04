@@ -1,12 +1,12 @@
 import { useState } from "react";
 import style from "./Form.module.css"
 import { Validate, ValidateForm } from "./validations";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Form = (props) => {
 
     const { platforms , genres, submitVideogame } = props
 
-    const { pathname } = useLocation()
+    const navigate = useNavigate()
 
     const [ videogameData , setVideogameData ] = useState({
         name : "",
@@ -59,9 +59,7 @@ const Form = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        if (pathname.endsWith(0)) {
-            console.log("entro al if");
-            if (Object.values(errors).some(error => error === '')){
+        if (Object.values(errors).every(error => error === '')){
                 submitVideogame({...videogameData, genres : selectedGenres, platforms : selectedPlatforms})
                 setVideogameData({
                     name : "",
@@ -80,14 +78,8 @@ const Form = (props) => {
                     genres : "Select at least one genre",
                     platforms : "Select at least one platform"
                 })
+                navigate("/home")
             } else {
-                setErrors(ValidateForm(videogameData, selectedGenres, selectedPlatforms))
-                window.alert("Please complete the form")
-            }
-        } 
-        console.log("entro al else");
-
-             else {
                 setErrors(ValidateForm(videogameData, selectedGenres, selectedPlatforms))
                 window.alert("Please complete the form")
             }

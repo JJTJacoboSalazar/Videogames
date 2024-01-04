@@ -19,7 +19,7 @@ import { get_genres, get_platforms, get_videogames, get_videogamesByName } from 
 //axios
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://videogamesback-67jw.onrender.com';
+axios.defaults.baseURL = 'http://localhost:3001';
 function App() {
 
   const { pathname } = useLocation();

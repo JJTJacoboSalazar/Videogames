@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { API_KEY } = process.env
 const axios = require('axios')
+const { Videogame , Genre } = require('../db')
 
 const findAllVideogames = async () => {
 
@@ -9,13 +10,25 @@ const findAllVideogames = async () => {
     const URL_PAGE_3 = `https://api.rawg.io/api/games?key=${API_KEY}&page_size=40&page=3`;
 
     try {
+        // the the games from the Database
+        const videogamesDB = await Videogame.findAll({
+            include : [
+                {
+                    model: Genre,
+                    attributes: ['name'],
+                    through: { attributes: [] }
+                },
+            ],
+            attributes : ['id', 'name', 'image', 'rating']
+        })
+
+        // the the games from the API
         const firstPageItems = await axios.get(URL_PAGE_1)
         const secondPageItems = await axios.get(URL_PAGE_2)
         const thirdPageItems = await axios.get(URL_PAGE_3)
+        videogamesApi = [].concat(firstPageItems.data.results, secondPageItems.data.results, thirdPageItems.data.results)
 
-        response = [].concat(firstPageItems.data.results, secondPageItems.data.results, thirdPageItems.data.results)
-    
-        const videogames = response.map((game) => ({
+        videogamesApiParsed = videogamesApi.map((game) => ({
             id : game.id,
             name: game.name,
             rating: game.rating,
@@ -25,7 +38,8 @@ const findAllVideogames = async () => {
             }),
         }));
 
-        return videogames
+        // concat all and return
+        return [...videogamesDB,...videogamesApiParsed]
 
     } catch (error) {
         return error
