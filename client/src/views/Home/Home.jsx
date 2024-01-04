@@ -6,6 +6,7 @@ import notfound2 from "../../assets/img/notfound2.jpg"
 import Order from "../../components/Filters/order/BtnOrder"
 import Filter from "../../components/Filters/filter/BtnFilter"
 import Pagination from "../../components/Pagination"
+// import BtnOrigin from "../../components/Filters/created/created"
 
 const Home = () => {
     const [ search , setSearch ] = useState(false)
@@ -13,7 +14,7 @@ const Home = () => {
     
     const [ btnFilter , setBtnFilter ] = useState(false)
     const [ btnOrder , setBtnOrder ] = useState(false)
-
+    // const [ btnOrigin , setBtnOrigin ] = useState(false)
     const videogames = useSelector(state => Array.isArray(state.home_videogames) ? state.home_videogames : [])
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -43,6 +44,8 @@ const Home = () => {
             <div className={style.filtercont}>
               
              <Filter genres={genres} visibility={btnFilter} setVisibilityFilter={setBtnFilter} setVisibilityOrder={setBtnOrder} setVisibilitySearch={setSearch}></Filter>
+             {/* <BtnOrigin visibility={btnOrigin} setVisibilityOrigin={setBtnOrigin} setVisibilityOrder={setBtnOrder} setVisibilityFilter={setBtnFilter} setVisibilitySearch={setSearch}></BtnOrigin> */}
+            <div className={style.filterBtn}></div>
             </div>
             </div>
             <Cards videogames={visible_videogames} ></Cards>
