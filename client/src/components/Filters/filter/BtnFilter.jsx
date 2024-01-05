@@ -6,7 +6,7 @@ import filter from '../../../assets/icons/filter.png'
 
 const BtnFilter = (props) => {
 
-    const { genres, visibility , setVisibilityOrder , setVisibilityFilter , setVisibilitySearch } = props
+    const { genres, visibility , setVisibilityOrder , setVisibilityFilter , setVisibilitySearch, showAllOnly } = props
 
     const dispatch = useDispatch()
 

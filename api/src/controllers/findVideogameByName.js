@@ -38,13 +38,13 @@ const findVideogameByName = async (gameName) => {
             })
         }));
 
-        const db_api = [...videogamesDB,...videogamesAPI];
-        const db_api_limited = db_api.slice(0, 20);
+        // retornara un maximo de 20 elementos
+        const db_api = {"database": videogamesDB.slice(0, 10), "api": videogamesAPI.slice(0, 10)}
 
         if (db_api.length === 0) {
             return ({ error: 'No videogames with this name were found.' });
           } else {
-            return db_api_limited
+            return db_api
           }
 
     } catch (error) {

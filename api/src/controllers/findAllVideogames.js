@@ -38,8 +38,7 @@ const findAllVideogames = async () => {
             }),
         }));
 
-        // concat all and return
-        return [...videogamesDB,...videogamesApiParsed]
+        return {"database": videogamesDB, "api": videogamesApiParsed}
 
     } catch (error) {
         return error

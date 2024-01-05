@@ -8,7 +8,9 @@ import {
 
 const initialState = {
     home_videogames : [],
-    copy_videogames : [],
+    database_videogames : [],
+    api_videogames : [],
+    all_videogames : [],
     genres: [],
     platforms : []
 };
@@ -18,8 +20,14 @@ const rootReducer = (state = initialState, {type, payload}) => {
         default:
             return {...state};
         case ADD_VIDEOGAMES:
-            return {...state, home_videogames : payload, copy_videogames : payload}
-        
+            const videogames_all_list = [...payload.database,...payload.api];
+            return {...state,
+                api_videogames: payload.api,
+                database_videogames: payload.database,
+                home_videogames: videogames_all_list,
+                all_videogames : videogames_all_list
+            }
+
         case ORDER:
             const orderedVideogames = [...state.home_videogames]
             if (payload === 'AZ') {
@@ -34,10 +42,20 @@ const rootReducer = (state = initialState, {type, payload}) => {
             return {...state, home_videogames : orderedVideogames}
         case FILTER:
             if (payload === 'Default') {
-                return {...state, home_videogames : state.copy_videogames}
+                return {...state, home_videogames : state.all_videogames}
             }
-            return {...state, home_videogames : state.copy_videogames.filter((game) => game.genres.some(genre => genre.name === payload))}
-        case GENRES:
+            else if (payload === 'db') {
+                return {...state, home_videogames : state.database_videogames}
+            }
+            else if (payload === 'api') {
+                return {...state, home_videogames : state.api_videogames}
+            }
+            else{
+                return {...state, 
+                    home_videogames : state.home_videogames.filter((game) => game.genres.some(genre => genre.name === payload))
+                }
+            }
+            case GENRES:
             return {...state, genres : payload}
         case PLATFORMS:
             return {...state, platforms : payload}
