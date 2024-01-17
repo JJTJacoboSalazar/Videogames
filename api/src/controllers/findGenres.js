@@ -11,18 +11,24 @@ const findGenres = async () => {
 
         const genresDB = await Genre.findAll();
 
+
         if (genresDB.length === 0) {
             
             const genresAPI = await axios.get(URL);
 
             const newGenres = genresAPI.data.results.map((genre, index) => ({
                 id: index,
-                name: genre.name,
+                name: genre.name
             }));
 
-            await Genre.bulkCreate(newGenres);
-            
-            return newGenres
+            const newGenre = {
+                id: 19,
+                name: 'Infantil'
+            }
+            const genres = [...newGenres, newGenre]
+          
+            await Genre.bulkCreate(genres);
+            return genres;
 
         } else {
             return genresDB

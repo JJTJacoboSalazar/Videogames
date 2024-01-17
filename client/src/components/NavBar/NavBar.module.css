@@ -3,8 +3,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.2rem;
-  background-color: #001829;
+  background-color: #0100296e;
+  padding-bottom: 20px;
 }
+
+.nav:hover {
+  background-color: #0000005b;
+  transition: 1s;
+}	
 
 .container {
   display: flex;
@@ -77,5 +83,4 @@
   .nav {
       flex-direction: column;
   }
-
 }

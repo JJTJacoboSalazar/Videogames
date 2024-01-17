@@ -14,7 +14,6 @@
 .filterImg {
     width: 50px;
     height: 50px;
-    cursor: pointer;
     border: none;
     outline: none;
     background: none;
@@ -31,18 +30,18 @@
 .optionsActive{
     width: 200px;
     height: 400px;
-    background-color: white;
-    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.726);
+    border-radius: 10px;
     position: relative;
     left: 80px;
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     font-style: normal;
-    color: #222222;
+    color: #ffffff;
     overflow-y: scroll;
     transition: .4s;
 }
@@ -55,25 +54,25 @@
     border-radius: 10px;
 }
 .optionsActive::-webkit-scrollbar-button {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.568);
     height: 10px;
 }
 
 .optionsDeactive{
     /* width: 200px; */
     height: 0px;
-    background-color: white;
-    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.514);
+    border-radius: 2px;
     position: relative;
     left: 80px;
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     font-style: normal;
-    color: #333333;
+    color: #ffffff;
     overflow: auto;
     transition: .2s;
 }
@@ -90,23 +89,24 @@
 
 .option{
     width: 100%;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     font-style: normal;
-    color: #333333;
+    color: #c0c0c0;
     text-align: center;
     cursor: pointer;    
 }
 .optionSelected{
     width: 100%;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     font-style: normal;
-    color: #333333;
+    color: #ffffff;
     text-align: center;
     cursor: pointer;
-    background-color: rgb(226, 204, 255);    
+    background-color: rgb(3, 6, 180);    
 }
 .option:hover{
-    background-color: rgb(226, 204, 255);
+    background-color: rgb(51, 102, 196);
+    color: rgb(255, 255, 255);
 }

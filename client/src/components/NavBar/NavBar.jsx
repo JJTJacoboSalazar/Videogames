@@ -19,12 +19,12 @@ const NavBar = (props) => {
         <div className={style.nav}>
             { pathname === Path.Home ? 
             <div className={style.navcontainer} >
-                <Link to={Path.Home} data-test-id="Home">
-                        <img src={home} alt="home" className={style.homeImg}/>
-                </Link>
+                {!search && 
                 <NavLink to={Path.Create} className={style.createbtn}>
                     <span>Create</span>
                 </NavLink>
+                }
+
                 <Search visibility={search} setVisibilityOrder={setBtnOrder} setVisibilityFilter={setBtnFilter} setVisibilitySearch={setSearch} searchTerm={searchTerm} setSearchTerm={setSearchTerm}></Search>
 
             </div>

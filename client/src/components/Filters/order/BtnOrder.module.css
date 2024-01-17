@@ -29,21 +29,21 @@
 }
 
 .optionsActive{
-    z-index: 2;
-    overflow: hidden;
     width: 200px;
     height: 240px;
-    background-color: white;
-    border-radius: 25px;
+    z-index: 2;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.726);
+    border-radius: 10px;
     position: relative;
     left: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     font-style: normal;
-    color: #333333;
+    color: #ffffff;
     transition: .4s;
 }
 .optionsDeactive{
@@ -51,8 +51,8 @@
     overflow: hidden;
     width: 200px;
     height: 0px;
-    background-color: white;
-    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.514);
+    border-radius: 2px;
     position: relative;
     left: 80px;
     display: flex;
@@ -61,23 +61,24 @@
 }
 .option{
     width: 100%;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     font-style: normal;
-    color: #333333;
+    color: #c0c0c0;
     text-align: center;
     cursor: pointer;    
 }
 .optionSelected{
     width: 100%;
-    font-family: 'Roboto';
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
     font-style: normal;
-    color: #333333;
+    color: #ffffff;
     text-align: center;
     cursor: pointer;
-    background-color: rgb(226, 204, 255);    
+    background-color: rgb(3, 6, 180);   
 }
 .option:hover{
-    background-color: rgb(226, 204, 255);
+    background-color: rgb(51, 102, 196);
+    color: rgb(255, 255, 255);
 }
