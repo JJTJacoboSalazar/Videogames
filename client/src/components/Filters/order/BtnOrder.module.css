@@ -1,7 +1,7 @@
 .wrapper{
     position: absolute;
     z-index: 2;
-    top: 60px;
+    top: 120px;
     left: 10px;
 }
 
@@ -81,4 +81,18 @@
 .option:hover{
     background-color: rgb(51, 102, 196);
     color: rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 600px) {
+    .orderBtn {
+        width: 40px;
+        height: 40px;
+    }
+    .wrapper {
+        top: 120px;
+        left: 5px;
+    }
+    .orderTitle {
+        font-size: 12px;
+    }
 }

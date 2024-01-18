@@ -2,13 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 0.2rem;
-  background-color: #0100296e;
-  padding-bottom: 20px;
+  background-color: #08004e5e;
 }
 
 .nav:hover {
-  background-color: #0000005b;
+  background-color: #00000041;
   transition: 1s;
 }	
 

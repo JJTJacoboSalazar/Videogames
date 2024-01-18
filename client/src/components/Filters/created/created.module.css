@@ -3,10 +3,16 @@
     font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.wrapper{
+/* .wrapper{
     position: absolute;
     z-index: 2;
     top: 160px;
+    left: 10px;
+} */
+.wrapper{
+    position: absolute;
+    z-index: 4;
+    top: 260px;
     left: 10px;
 }
 .originBtn{
@@ -74,4 +80,18 @@
 .option:hover{
     background-color: rgb(51, 102, 196);
     color: rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 600px) {
+    .originBtn{
+        width: 40px;
+        height: 40px;
+    }
+    .wrapper{
+        top: 210px;
+        left: 5px;
+    }
+    .originTitle{
+        font-size: 12px;
+    }
 }

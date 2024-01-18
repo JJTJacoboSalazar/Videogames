@@ -23,7 +23,7 @@ const findGenres = async () => {
 
             const newGenre = {
                 id: 19,
-                name: 'Infantil'
+                name: 'Children'
             }
             const genres = [...newGenres, newGenre]
           
